@@ -90,7 +90,7 @@ def detect_from_file():
         return res
 
 # Load YOLO model:
-#configPath = os.environ.get("config_file")
+config = os.environ.get("config_file")
 weights = os.environ.get("weights_file")
 
 imgsz= int(os.environ.get("img_size"))
@@ -105,7 +105,7 @@ device = torch_utils.select_device(src_device)
 
 # Load model
 # google_utils.attempt_download(weights)
-model = Darknet(opt.cfg, imgsz)
+model = Darknet(config, imgsz)
 
 # Load weights
 if weights.endswith('.pt'):  # pytorch format
