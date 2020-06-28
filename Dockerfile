@@ -20,7 +20,7 @@ RUN python3  -c "from models import *;convert('cfg/yolov4.cfg', 'yolov4.weights'
 # Model to use (defaults to yolov5):
 ARG weights_file="weights/yolov4.pt"
 ARG config_file="cfg/yolov4.cfg"
-ARG meta_file="cfg/coco.data"
+ARG meta_file="data/coco.names"
 ARG img_size=640
 
 ENV weights_file=${weights_file}

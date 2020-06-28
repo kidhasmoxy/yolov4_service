@@ -92,6 +92,7 @@ def detect_from_file():
 # Load YOLO model:
 config = os.environ.get("config_file")
 weights = os.environ.get("weights_file")
+name_file = os.environ.get("meta_file")
 
 imgsz= int(os.environ.get("img_size"))
 src_device=os.environ.get("device")
@@ -127,7 +128,7 @@ if half:
     model.half()
 
 # Get names and colors
-names = model.names if hasattr(model, 'names') else model.modules.names
+names = load_classes(name_file)
 colors = [[random.randint(0, 255) for _ in range(3)] for _ in range(len(names))]
 
 # prepare inference
