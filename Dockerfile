@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights
 
 # Convert to Pytorch
-RUN python3  -c "from models import *; convert('cfg/yolov4.cfg', 'yolov4.weights')"
+RUN python3  -c "from models import *;try;  convert('cfg/yolov4.cfg', 'yolov4.weights');"
 
 
 # Model to use (defaults to yolov5):
