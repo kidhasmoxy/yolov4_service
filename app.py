@@ -6,6 +6,7 @@ import urllib.request
 import tempfile
 import ast
 
+from models import *  # set ONNX_EXPORT in models.py
 from utils.datasets import *
 from utils.utils import *
 
