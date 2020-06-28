@@ -104,9 +104,13 @@ device = torch_utils.select_device(src_device)
 
 # Load model
 # google_utils.attempt_download(weights)
-model = torch.load(weights, map_location=device)['model']
-#torch.save(torch.load(weights, map_location=device), weights)  # update model if SourceChangeWarning
-#model.fuse()
+model = Darknet(opt.cfg, imgsz)
+
+# Load weights
+if weights.endswith('.pt'):  # pytorch format
+model.load_state_dict(torch.load(weights, map_location=device)['model'])
+else:  # darknet format
+load_darknet_weights(model, weights)
 
 model.to(device).eval()
 
