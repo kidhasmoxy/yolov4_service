@@ -103,7 +103,7 @@ iou_thres=float(os.environ.get("iou_thres"))
 device = torch_utils.select_device(src_device)
 
 # Load model
-google_utils.attempt_download(weights)
+# google_utils.attempt_download(weights)
 model = torch.load(weights, map_location=device)['model']
 torch.save(torch.load(weights, map_location=device), weights)  # update model if SourceChangeWarning
 model.fuse()
